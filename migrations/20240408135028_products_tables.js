@@ -14,7 +14,7 @@ exports.up = function (knex) {
     })
     .createTable("products_details", (table) => {
       table.increments("id").primary();
-      table.string("features").notNullable();
+      table.text("features").notNullable();
       table.string("includes").notNullable();
       // create a integer column for the foreign key
       table.integer("product_id").unsigned().notNullable();
@@ -24,9 +24,9 @@ exports.up = function (knex) {
     .createTable("products_images", (table) => {
       table.increments("id").primary();
       table.string("type").notNullable();
-      table.string("mobile_url").notNullable();
-      table.string("tablet_url").notNullable();
-      table.string("desktop_url").notNullable();
+      table.string("url_mobile").notNullable();
+      table.string("url_tablet").notNullable();
+      table.string("url_desktop").notNullable();
       // create a column for the foreign key can't be negative or null
       table.integer("product_id").unsigned().notNullable();
       table.foreign("product_id").references("id").inTable("products");
