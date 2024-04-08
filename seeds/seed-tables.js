@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 const products = require("../seed-data/products");
-const products_details = require("../seed-data/products-details");
+const products_details = require("../seed-data/products_details");
 const products_images = require("../seed-data/products_image");
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
