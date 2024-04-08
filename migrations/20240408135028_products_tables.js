@@ -14,7 +14,7 @@ exports.up = function (knex) {
     })
     .createTable("products_details", (table) => {
       table.increments("id").primary();
-      table.string("features").notNullable();
+      table.text("features").notNullable();
       table.string("includes").notNullable();
       // create a integer column for the foreign key
       table.integer("product_id").unsigned().notNullable();
