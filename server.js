@@ -11,11 +11,14 @@ app.use(cors());
 require("dotenv").config();
 const { PORT } = process.env;
 
+app.use(express.static("./assets"));
+app.use(express.json());
+
 // default home route
 app.get("/", (req, res) => {
   res.send("Welcome to the audiophile api");
 });
 
 app.listen(PORT, (req, res) => {
-  console.log("audiophile server running");
+  console.log("audiophile server running", `${PORT}`);
 });
