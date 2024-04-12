@@ -11,6 +11,9 @@ exports.up = function (knex) {
       table.string("category").notNullable();
       table.integer("price").notNullable();
       table.string("is_new").notNullable().defaultTo(true);
+      table.string("url_mobile").notNullable();
+      table.string("url_tablet").notNullable();
+      table.string("url_desktop").notNullable();
     })
     .createTable("products_details", (table) => {
       table.increments("id").primary();
