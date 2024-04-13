@@ -8,6 +8,7 @@ const getHeadphones = (req, res) => {
     .where("category", "headphones")
     .where("products_images.type", "categoryImage")
     .select(
+      "products.id",
       "products.name",
       "products.description",
       "products_images.url_mobile",
