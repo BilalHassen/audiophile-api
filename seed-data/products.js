@@ -8,9 +8,6 @@ module.exports = [
     category: "earphones",
     is_new: "true", // Convert to string representing boolean value
     price: 599,
-    url_mobile: `${baseURL}/product-yx1-earphones/mobile/image-category-page-preview.jpg`,
-    url_tablet: `${baseURL}/product-yx1-earphones/tablet/image-category-page-preview.jpg`,
-    url_desktop: `${baseURL}/product-yx1-earphones/desktop/image-category-page-preview.jpg`,
   },
   {
     id: 2,
@@ -20,9 +17,6 @@ module.exports = [
     category: "headphones",
     is_new: "true", // Convert to string representing boolean value
     price: 2999,
-    url_mobile: `${baseURL}/product-xx99-mark-two-headphones/mobile/image-category-page-preview.jpg`,
-    url_tablet: `${baseURL}/product-xx99-mark-two-headphones/tablet/image-category-page-preview.jpg`,
-    url_desktop: `${baseURL}/product-xx99-mark-two-headphones/desktop/image-category-page-preview.jpg`,
   },
   {
     id: 3,
@@ -32,9 +26,6 @@ module.exports = [
     category: "headphones",
     is_new: "false", // Convert to string representing boolean value
     price: 1750,
-    url_mobile: `${baseURL}/product-xx99-mark-one-headphones/mobile/image-category-page-preview.jpg`,
-    url_tablet: `${baseURL}/product-xx99-mark-one-headphones/tablet/image-category-page-preview.jpg`,
-    url_desktop: `${baseURL}/product-xx99-mark-one-headphones/desktop/image-category-page-preview.jpg`,
   },
   {
     id: 4,
@@ -44,9 +35,6 @@ module.exports = [
     category: "headphones",
     is_new: "false", // Convert to string representing boolean value
     price: 899,
-    url_mobile: `${baseURL}/product-xx59-headphones/mobile/image-category-page-preview.jpg`,
-    url_tablet: `${baseURL}/product-xx59-headphones/tablet/image-category-page-preview.jpg`,
-    url_desktop: `${baseURL}/product-xx59-headphones/desktop/image-category-page-preview.jpg`,
   },
   {
     id: 5,
@@ -56,9 +44,6 @@ module.exports = [
     category: "speakers",
     is_new: "false", // Convert to string representing boolean value
     price: 3500,
-    url_mobile: `${baseURL}/product-zx7-speaker/mobile/image-category-page-preview.jpg`,
-    url_tablet: `${baseURL}/product-zx7-speaker/tablet/image-category-page-preview.jpg`,
-    url_desktop: `${baseURL}/product-zx7-speaker/desktop/image-category-page-preview.jpg`,
   },
   {
     id: 6,
@@ -68,8 +53,5 @@ module.exports = [
     category: "speakers",
     is_new: "true", // Convert to string representing boolean value
     price: 4500,
-    url_mobile: `${baseURL}/product-zx9-speaker/mobile/image-category-page-preview.jpg`,
-    url_tablet: `${baseURL}/product-zx9-speaker/tablet/image-category-page-preview.jpg`,
-    url_desktop: `${baseURL}/product-zx9-speaker/desktop/image-category-page-preview.jpg`,
   },
 ];

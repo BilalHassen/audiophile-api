@@ -1,20 +1,24 @@
+const products = require("../seed-data/products");
+
 const knex = require("knex")(require("../knexfile"));
 
 const getHeadphones = (req, res) => {
-  // Query the "products" table
   knex("products")
-    // Filter rows where the "category" column equals "headphones"
+    .join("products_images", "products.id", "products_images.product_id")
     .where("category", "headphones")
-    // Select specific columns for the result
-    .select("name", "description", "url_mobile", "url_tablet", "url_desktop")
-    // Handle the result
-    .then((productData) => {
-      // Send the queried data as JSON response
-      res.json(productData);
+    .where("products_images.type", "categoryImage")
+    .select(
+      "products.name",
+      "products.description",
+      "products_images.url_mobile",
+      "products_images.url_tablet",
+      "products_images.url_desktop"
+    )
+    .then((data) => {
+      res.json(data);
     })
-    // Handle errors, if any
     .catch((err) => {
-      console.log(err);
+      res.status(500).json({ err: "Internal Server Error" });
     });
 };
 
