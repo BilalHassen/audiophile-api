@@ -3,4 +3,5 @@ const productController = require("../controllers/products-controller");
 
 router.route("/headphones").get(productController.getHeadphones);
 router.route("/speakers").get(productController.getSpeakers);
+router.route("/earphones").get(productController.getEarphones);
 module.exports = router;
