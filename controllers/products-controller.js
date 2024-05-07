@@ -74,13 +74,18 @@ const getProductById = (req, res) => {
   knex("products")
     .where({ "products.id": productID })
     .join("products_details", "products.id", "products_details.product_id")
+    .join("products_images", "products.id", "products_images.product_id")
+    .where("products_images.type", "categoryImage")
     .select(
       "products.id",
       "products.name",
       "products.description", // Corrected column name
       "products.price",
       "products_details.features",
-      "products_details.includes"
+      "products_details.includes",
+      "products_images.url_mobile",
+      "products_images.url_tablet",
+      "products_images.url_desktop"
     )
 
     .then((data) => {
