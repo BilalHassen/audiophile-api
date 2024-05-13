@@ -49,6 +49,10 @@ module.exports = [
         quantity: 1,
         item: "3.5mm 5m audio cable",
       },
+      {
+        quantity: 1,
+        item: "Travel Bag",
+      },
     ]),
     product_id: 2,
   },
