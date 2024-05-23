@@ -6,4 +6,5 @@ router.route("/speakers").get(productController.getSpeakers);
 router.route("/earphones").get(productController.getEarphones);
 
 router.route("/:id").get(productController.getProductById);
+router.route("/relatedproducts/:id").get(productController.getRelatedProducts);
 module.exports = router;

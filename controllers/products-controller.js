@@ -1,4 +1,5 @@
 const products = require("../seed-data/products");
+const related_products = require("../seed-data/related_products");
 
 const knex = require("knex")(require("../knexfile"));
 
@@ -79,7 +80,7 @@ const getProductById = (req, res) => {
     .select(
       "products.id",
       "products.name",
-      "products.description", // Corrected column name
+      "products.description",
       "products.price",
       "products_details.features",
       "products_details.includes",
@@ -121,9 +122,35 @@ const getProductById = (req, res) => {
     });
 };
 
+const getRelatedProducts = (req, res) => {
+  const { id } = req.params;
+  const idToNumber = parseInt(id);
+
+  if (idToNumber > 6 || idToNumber <= 0) {
+    res.status(500).json({ error: "Product Not Found" });
+  } else {
+    knex("products")
+      .join("related_products", "products.id", "related_products.product_id")
+      .where("related_products.product_id", id)
+      .select(
+        "related_products.name",
+        "related_products.mobile_url",
+        "related_products.tablet_url",
+        "related_products.desktop_url"
+      )
+      .then((data) => {
+        res.json(data);
+      })
+      .catch(() => {
+        res.status(500).json({ error: "internal server error" });
+      });
+  }
+};
+
 module.exports = {
   getHeadphones,
   getSpeakers,
   getEarphones,
   getProductById,
+  getRelatedProducts,
 };
