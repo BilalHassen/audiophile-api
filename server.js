@@ -11,8 +11,11 @@ app.use(cors());
 require("dotenv").config();
 const { PORT } = process.env;
 
-app.use(express.static("./assets"));
 app.use(express.json());
+
+const productRoutes = require("./routes/products");
+app.use(express.static("assets"));
+app.use("/products", productRoutes);
 
 // default home route
 app.get("/", (req, res) => {

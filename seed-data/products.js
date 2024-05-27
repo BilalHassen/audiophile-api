@@ -1,3 +1,4 @@
+const baseURL = "http://localhost:8080";
 module.exports = [
   {
     id: 1,
@@ -10,12 +11,12 @@ module.exports = [
   },
   {
     id: 2,
-    name: "XX59-Headphones",
+    name: "XX99 Mark II Headphones",
     description:
-      "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move",
+      "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
     category: "headphones",
-    is_new: "false", // Convert to string representing boolean value
-    price: 899,
+    is_new: "true", // Convert to string representing boolean value
+    price: 2999,
   },
   {
     id: 3,
@@ -28,12 +29,12 @@ module.exports = [
   },
   {
     id: 4,
-    name: "XX99 Mark II Headphones",
+    name: "XX59-Headphones",
     description:
-      "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
+      "Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move",
     category: "headphones",
-    is_new: "true", // Convert to string representing boolean value
-    price: 2999,
+    is_new: "false", // Convert to string representing boolean value
+    price: 899,
   },
   {
     id: 5,
