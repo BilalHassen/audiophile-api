@@ -14,8 +14,11 @@ const { PORT } = process.env;
 app.use(express.json());
 
 const productRoutes = require("./routes/products");
+const cartRoutes = require("./routes/carts");
 app.use(express.static("assets"));
+
 app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
 
 // default home route
 app.get("/", (req, res) => {
