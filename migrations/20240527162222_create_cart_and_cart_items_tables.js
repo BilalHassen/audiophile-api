@@ -6,12 +6,12 @@ exports.up = function (knex) {
   // table for each individual cart
   return knex.schema
     .createTable("cart", (table) => {
-      table.increments("id").unsigned().primary();
+      table.string("id").primary();
       table.timestamp("created_at").defaultTo(knex.fn.now());
     })
     .createTable("cart_items", (table) => {
-      table.increments("id").unsigned().primary();
-      table.integer("cart_id").notNullable();
+      table.increments("id").primary();
+      table.string("cart_id").notNullable();
       table
         .foreign("cart_id")
         .references("id")

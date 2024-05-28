@@ -2,17 +2,50 @@
 const knex = require("knex")(require("../knexfile"));
 
 const addItem = (req, res) => {
-  console.log(req.body);
+  // destruct the req.body contents
+  const { id, product_id, quantity, price, cart_id } = req.body;
+
+  // check if the id exists in the cart table
   knex("cart")
-    .insert({
-      created_at: new Date(),
+    .where({ id: cart_id })
+    .first()
+    .then((existingCart) => {
+      // if not add it
+      if (!existingCart) {
+        return knex("cart").insert({ id: cart_id });
+      }
     })
     .then(() => {
-      res.status(201).json({ message: "item added" });
+      return knex("cart_items")
+        .where({
+          cart_id: cart_id,
+          product_id: product_id,
+        })
+        .first();
     })
-    .catch((error) => {
-      console.error("Error adding item to cart:", error);
-      res.status(500).json({ error: "Internal server error" });
+    .then((existingItem) => {
+      if (existingItem) {
+        return knex("cart_items")
+          .where({ cart_id: cart_id, product_id: product_id })
+          .update({
+            quantity: knex.raw("?", [quantity]),
+            price: price * quantity,
+          });
+      } else if (quantity > 1) {
+        return knex("cart_items").insert({
+          cart_id: cart_id,
+          product_id: product_id,
+          quantity: knex.raw("?", [quantity]),
+          price: price * quantity,
+        });
+      } else if (quantity <= 1) {
+        return knex("cart_items").insert({
+          cart_id: cart_id,
+          product_id: product_id,
+          quantity: quantity,
+          price: price,
+        });
+      }
     });
 };
 
