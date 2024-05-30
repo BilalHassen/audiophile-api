@@ -17,7 +17,7 @@ exports.up = function (knex) {
         .references("id")
         .inTable("cart")
         .onDelete("CASCADE");
-
+      table.string("item_name").notNullable();
       table.integer("product_id").notNullable();
       table.integer("quantity").notNullable();
       table.decimal("price", 10, 2).notNullable();
