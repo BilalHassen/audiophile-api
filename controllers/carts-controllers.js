@@ -125,8 +125,27 @@ const getItemsInCart = (req, res) => {
     });
 };
 
+const removeAll = (req, res) => {
+  const cart_id = req.params.id;
+  knex("cart_items")
+    .where({ cart_id: cart_id })
+    .select()
+    .del()
+    .then((deletedData) => {
+      console.log(deletedData);
+      res
+        .status(200)
+        .json({ message: "successfully deleted all items from cart" });
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "internal server error" });
+    });
+};
+
 module.exports = {
   addItem,
   getItemsInCart,
   updateItemsInCart,
+  removeAll,
 };

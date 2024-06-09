@@ -9,6 +9,7 @@ const cartsController = require("../controllers/carts-controllers");
 router.route("/additem/:id").post(cartsController.addItem);
 router.route("/updateitem/:id").put(cartsController.updateItemsInCart);
 router.route("/getitems/:id").get(cartsController.getItemsInCart);
+router.route("/deleteitems/:id").delete(cartsController.removeAll);
 
 // Export the router object to make it available for use in other modules
 module.exports = router;
