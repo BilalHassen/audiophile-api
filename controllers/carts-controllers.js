@@ -61,7 +61,10 @@ const updateItemsInCart = (req, res) => {
     .select("cart_items.product_id", "cart_items.quantity", "cart_items.price")
     .first()
     .then((productData) => {
+      console.log("product data:", productData);
       const originalPrice = productData.price / productData.quantity;
+
+      console.log("product data:", productData);
 
       return knex("cart_items")
         .where({ product_id: product_id })
@@ -70,8 +73,20 @@ const updateItemsInCart = (req, res) => {
           price: originalPrice * quantity,
         });
     })
+    .then(() => {
+      return knex("cart_items").where({ product_id: product_id }).first();
+    })
     .then((data) => {
-      console.log({ data });
+      console.log(data);
+      if (data.quantity === 0) {
+        return knex("cart_items")
+          .where({ product_id: product_id })
+          .first()
+          .del();
+      }
+    })
+    .then((data) => {
+      console.log(data);
       res.status(200).json({ message: "Cart item updated successfully." });
     })
     .catch((error) => {
