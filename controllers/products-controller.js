@@ -1,3 +1,5 @@
+const { up } = require("../migrations/20240408135028_products_tables");
+const { get } = require("../routes/products");
 const products = require("../seed-data/products");
 const related_products = require("../seed-data/related_products");
 
@@ -39,7 +41,6 @@ const getSpeakers = (req, res) => {
       "products_images.url_desktop"
     )
     .then((data) => {
-      console.log({ data });
       res.json(data);
     })
     .catch(() => {
@@ -133,13 +134,28 @@ const getRelatedProducts = (req, res) => {
       .join("related_products", "products.id", "related_products.product_id")
       .where("related_products.product_id", id)
       .select(
+        "related_products.product_id",
         "related_products.name",
         "related_products.mobile_url",
         "related_products.tablet_url",
         "related_products.desktop_url"
       )
       .then((data) => {
-        res.json(data);
+        // console.log(data.length);
+        const getRelatedIds = data.map((item) => {
+          return knex("products")
+            .where("products.related_name", item.name)
+            .select("products.id")
+            .then((relatedIds) => {
+              console.log("150", relatedIds);
+              const updatedData = { ...item, related_id: relatedIds };
+              return updatedData;
+            });
+        });
+        return Promise.all(getRelatedIds);
+      })
+      .then((updatedData) => {
+        res.json(updatedData);
       })
       .catch(() => {
         res.status(500).json({ error: "internal server error" });

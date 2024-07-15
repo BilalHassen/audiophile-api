@@ -7,6 +7,7 @@ exports.up = function (knex) {
     .createTable("products", (table) => {
       table.increments("id").primary();
       table.string("name").notNullable();
+      table.string("related_name").notNullable();
       table.string("description").notNullable();
       table.string("category").notNullable();
       table.integer("price").notNullable();
