@@ -1,8 +1,3 @@
-const { up } = require("../migrations/20240408135028_products_tables");
-const { get } = require("../routes/products");
-const products = require("../seed-data/products");
-const related_products = require("../seed-data/related_products");
-
 const knex = require("knex")(require("../knexfile"));
 
 const getHeadphones = (req, res) => {
